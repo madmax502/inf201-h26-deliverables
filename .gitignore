@@ -1,0 +1,4 @@
+.venv/
+frost_client_id.txt
+__pycache__/
+.ipynb_checkpoints/
