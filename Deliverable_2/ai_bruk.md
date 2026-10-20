@@ -7,7 +7,7 @@ We used AI as a support tool while working on Deliverable 2.
 - **Formatting and comments:** We used AI to clean up the code so that it follows PEP8, structure the notebook with Markdown, and add short comments in selected places.
 - **Reviewing correctness:** AI identified and corrected the NOK currency mask, changed refund ratios to use transaction counts rather than revenue, and added the required output formats and filenames.
 - **Checking and preparing the submission:** AI helped run and check the notebook, update requirements, summarise the results.
-- **Repository documentation:** We used AI for suggestions for the README and `.gitignore`. We also used useful code-completion suggestions while writing the code.
+- **Repository documentation:** We used AI for suggestions for the README and `.gitignore`. We also used useful code-completion suggestions from github while writing the code.
 
 
 ## Collaboration

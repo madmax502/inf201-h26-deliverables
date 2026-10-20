@@ -30,12 +30,7 @@ The generator comes from the course; its output path is relative to this folder.
 
 The submission also contains a PDF of the notebook and a Git commit-log
 snapshot. These submission-only files are kept outside the repository.
-The group will record and add the required video separately.
-After your final commit, regenerate `git_log.txt` for submission with:
 
-```powershell
-git log --graph --pretty=format:"%h - %an, %ar : %s" > git_log.txt
-```
 
 ## Collaboration
 
