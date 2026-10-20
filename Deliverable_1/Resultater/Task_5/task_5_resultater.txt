@@ -1,0 +1,1 @@
+Se figuren og CSV-filen med daglig middeltemperatur og 7-dagers glidende gjennomsnitt. De første seks dagene har ingen glidende gjennomsnittsverdi.

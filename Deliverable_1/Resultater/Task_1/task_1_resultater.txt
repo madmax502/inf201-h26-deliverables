@@ -1,0 +1,7 @@
+Antall dager med temperaturdata: 365
+Lufttemperatur i Ås, 2025
+  Statistikk  Temperatur (°C)
+Gjennomsnitt             7.87
+      Median             8.30
+     Minimum           -15.50
+    Maksimum            23.70

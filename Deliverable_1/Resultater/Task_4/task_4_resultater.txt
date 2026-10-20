@@ -1,0 +1,7 @@
+Dager med maksimumstemperatur i 2025: 365
+Antall hetebølger i Ås i 2025: 1
+dates:
+- 2025-07-16 - 2025-07-22
+station_id: SN17850
+station_name: ÅS
+year: 2025

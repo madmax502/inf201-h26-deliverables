@@ -1,0 +1,7 @@
+Antall dager med temperaturdata i 1925: 365
+Lufttemperatur i Ås, 1925 og 2025
+  Statistikk  1925 (°C)  2025 (°C)
+Gjennomsnitt       5.28       7.87
+      Median       5.30       8.30
+     Minimum     -20.70     -15.50
+    Maksimum      24.30      23.70
