@@ -33,11 +33,15 @@ def generate_log_line(ts: datetime, reg_id: str) -> str:
     item_name, base_price = random.choice(ITEMS)
     currency = random.choice(CURRENCIES)
 
-    price = 999.00 if random.random() < 0.03 else round(base_price + random.uniform(-0.5, 0.5), 2)
+    price = 999.00 if random.random() < 0.03 else round(
+        base_price + random.uniform(-0.5, 0.5), 2)
     status = random.choice(STATUSES)
     ts_str = ts.strftime("%Y-%m-%d %H:%M:%S")
 
-    return f"[{ts_str}] [{reg_id}] item={item_name} price={price:.2f} {currency} ({status})\n"
+    return (
+        f"[{ts_str}] [{reg_id}] item={item_name} "
+        f"price={price:.2f} {currency} ({status})\n"
+    )
 
 
 def create_dataset():
@@ -51,7 +55,7 @@ def create_dataset():
 
             log_file = folder / "register_sales.log"
             encoding = "utf-8" if file_idx % 2 == 0 else "iso-8859-1"
-            
+
             lines = []
             current_time = start_time
 
