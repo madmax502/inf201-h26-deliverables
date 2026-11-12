@@ -1,3 +1,10 @@
+"""Characters for the battle simulator (Task 1, 3 and 4).
+
+Extends ``game_simulator_v1.py`` from lecture 08 with ``take_damage()``,
+``heal()``, an ``is_alive`` property, optional weapons and the two
+subclasses ``Warrior`` and ``Mage``.
+"""
+
 from items import Weapon
 
 
@@ -12,7 +19,8 @@ class Character:
         Args:
             name (str): The name of the character.
             hp_max (int): Max hit points (default = 100)
-            damage (int): Base damage dealt when character attacks (default = 10)
+            damage (int): Base damage dealt when character attacks
+                (default = 10)
             weapon (Weapon | None): Optional equipped weapon (default = None)
         """
         self.name = name
@@ -31,11 +39,13 @@ class Character:
 
     def take_damage(self, amount: int) -> None:
         """Reduce own HP by amount, but not below 0"""
+        _check_not_negative(amount)
         self._hp -= amount
         self._hp = max(self._hp, 0)  # HP cannot end up lower than 0
 
     def heal(self, amount: int) -> None:
         """Increase own HP by amount, but not above hp_max"""
+        _check_not_negative(amount)
         self._hp += amount
         self._hp = min(self._hp, self.hp_max)  # HP cannot exceed hp_max
 
@@ -45,20 +55,22 @@ class Character:
 
     def __repr__(self) -> str:
         """Representation of character object"""
-        return f"<Character name={self.name} hp={self.hp} damage={self.damage}>"
+        return (f"<{type(self).__name__} name={self.name} hp={self.hp} "
+                f"damage={self.damage}>")
 
     def __str__(self) -> str:
         """String representation of character object"""
-        return f"Character: {self.name} with {self.hp} HP and {self.damage} damage"
+        return (f"{type(self).__name__}: {self.name} with {self.hp} HP "
+                f"and {self.damage} damage")
 
     @property
     def hp(self) -> int:
-        """Public read-only property to inspect HP without allowing direct, unsafe edits."""
+        """Public read-only property to inspect HP without unsafe edits."""
         return self._hp
 
     @property
     def is_alive(self) -> bool:
-        """Read-only property: True if the character has HP left, otherwise False"""
+        """Read-only property: True if the character has HP left"""
         return self._hp > 0
 
 
@@ -78,7 +90,8 @@ class Warrior(Character):
         self.armor = armor
 
     def take_damage(self, amount: int) -> None:
-        """Reduce incoming damage by armor (never below 0) before applying it"""
+        """Reduce incoming damage by armor (never below 0), then apply it"""
+        _check_not_negative(amount)
         reduced = max(amount - self.armor, 0)
         super().take_damage(reduced)
 
@@ -107,7 +120,8 @@ class Mage(Character):
     def attack(self, target: Character) -> None:
         """
         Spell attack (double base damage, no weapon) if mana >= 10,
-        otherwise a normal attack (with weapon if equipped) that restores 5 mana.
+        otherwise a normal attack (with weapon if equipped) that restores
+        5 mana.
         """
         if self.mana >= self.SPELL_COST:
             self.mana -= self.SPELL_COST
@@ -115,3 +129,13 @@ class Mage(Character):
         else:
             super().attack(target)
             self.mana = min(self.mana + self.MANA_RESTORE, self.mana_max)
+
+
+def _check_not_negative(amount: int) -> None:
+    """Raise ValueError if amount is negative.
+
+    A negative amount would let take_damage() heal a character above
+    hp_max, or heal() lower the HP below 0.
+    """
+    if amount < 0:
+        raise ValueError(f"amount must be 0 or more, got {amount}")

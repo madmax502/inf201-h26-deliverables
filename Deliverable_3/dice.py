@@ -1,4 +1,4 @@
-#Task 2
+"""Dice with any number of sides for random damage (Task 2)."""
 
 import random
 
@@ -13,7 +13,7 @@ class Dice:
         self.sides = sides
 
     def roll(self) -> int:
-        """Roll the dice and return a random number between 1 and the number of sides"""
+        """Roll the dice and return a number between 1 and sides"""
         return random.randint(1, self.sides)
 
     def __call__(self) -> int:
